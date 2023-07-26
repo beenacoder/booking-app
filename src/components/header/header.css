@@ -42,3 +42,18 @@
     padding: 10px;
     cursor: pointer;
 }
+
+.header-search {
+    height: 30px;
+    background-color: white;
+    border: 3px solid #febb02;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0px;
+    border-radius: 5px;
+}
+
+.header-icon {
+    color: #555;
+}

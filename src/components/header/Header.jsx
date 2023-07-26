@@ -1,4 +1,4 @@
-import { faBed, faCar, faChurch, faPlane, faTaxi } from "@fortawesome/free-solid-svg-icons";
+import { faBed, faCalendarDays, faCar, faChurch, faPerson, faPlane, faTaxi } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './header.css';
 
@@ -36,7 +36,15 @@ const Header = () => {
                 <div className="header-search">
                     <div className="header-search-item">
                         <FontAwesomeIcon icon={faBed} className="header-icon" />
-                        <input type="text" placeholder="Busca tu próximo destino" className="header-search-input"/>
+                        <input type="text" placeholder="Busca tu próximo destino" className="header-search-input" />
+                    </div>
+                    <div className="header-search-item">
+                        <FontAwesomeIcon icon={faCalendarDays} className="header-icon" />
+                        <span className="header-search-text">Desde hasta</span>
+                    </div>
+                    <div className="header-search-item">
+                        <FontAwesomeIcon icon={faPerson} className="header-icon" />
+                        <span className="header-search-text">2 Adultos, 2 menores 1 habitación</span>
                     </div>
                 </div>
             </div>
