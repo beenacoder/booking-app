@@ -40,11 +40,14 @@ const Header = () => {
                     </div>
                     <div className="header-search-item">
                         <FontAwesomeIcon icon={faCalendarDays} className="header-icon" />
-                        <span className="header-search-text">Desde hasta</span>
+                        <span className="header-search-text">Desde - Hasta</span>
                     </div>
                     <div className="header-search-item">
                         <FontAwesomeIcon icon={faPerson} className="header-icon" />
                         <span className="header-search-text">2 Adultos, 2 menores 1 habitación</span>
+                    </div>
+                    <div className="header-search-item">
+                        <button className="header-btn">Buscar</button>
                     </div>
                 </div>
             </div>
