@@ -1,8 +1,30 @@
 import { faBed, faCalendarDays, faCar, faChurch, faPerson, faPlane, faTaxi } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './header.css';
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+import { useState } from "react";
+import { DateRange } from "react-date-range";
+import { format } from "date-fns";
 
 const Header = () => {
+    const [openCalendar, setOpenCalendar] = useState(false);
+    const [date, setDate] = useState([
+        {
+          startDate: new Date(),
+          endDate: new Date(),
+          key: 'selection'
+        }
+      ]);
+      
+    const {openOptions, setOpenOptions} = useState(false);
+    const [options, setOptions] = useState({
+        adult: 1,
+        children: 0,
+        room: 1
+    })
+    const {adult, children, room} = options;
+
     return (
         <div className='header'>
             <div className="header-container">
@@ -40,11 +62,44 @@ const Header = () => {
                     </div>
                     <div className="header-search-item">
                         <FontAwesomeIcon icon={faCalendarDays} className="header-icon" />
-                        <span className="header-search-text">Desde - Hasta</span>
+                        <span onClick={() => {setOpenCalendar(!openCalendar)}} className="header-search-text">{`${format(date[0].startDate, "dd/MM/yyyy")} hasta ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
+                        {openCalendar && <DateRange
+                            editableDateInputs={true}
+                            onChange={item => setDate([item.selection])}
+                            moveRangeOnFirstSelection={false}
+                            ranges={date}
+                            className="date-range"
+                        />}
                     </div>
                     <div className="header-search-item">
                         <FontAwesomeIcon icon={faPerson} className="header-icon" />
-                        <span className="header-search-text">2 Adultos, 2 menores 1 habitación</span>
+                        <span className="header-search-text">{`${adult} adulto - ${children} menor/es - ${room} habitación `}</span>
+                        <div className="options-host">
+                            <div className="options-host-item">
+                                <span className="option-host-text">Adulto</span>
+                                <div className="options-host-counter">
+                                    <button className="option-host-counter-btn">-</button>
+                                    <span className="option-host-number">0</span>
+                                    <button className="option-host-counter-btn">+</button>
+                                </div>
+                            </div>
+                            <div className="options-host-item">
+                                <span className="option-host-text">Menores</span>
+                                <div className="options-host-counter">
+                                    <button className="option-host-counter-btn">-</button>
+                                    <span className="option-host-number">0</span>
+                                    <button className="option-host-counter-btn">+</button>
+                                </div>
+                            </div>
+                            <div className="options-host-item">
+                                <span className="option-host-text">Habitación</span>
+                                <div className="options-host-counter">
+                                    <button className="option-host-counter-btn">-</button>
+                                    <span className="option-host-number">0</span>
+                                    <button className="option-host-counter-btn">+</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div className="header-search-item">
                         <button className="header-btn">Buscar</button>
