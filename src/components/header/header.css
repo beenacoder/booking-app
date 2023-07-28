@@ -76,6 +76,7 @@
 .header-search-text {
     color: #555;
     cursor: pointer;
+    
 }
  
 .date-range {
@@ -123,4 +124,9 @@
 
 .option-host-text {
     margin: 5px;
+}
+
+.option-host-counter-btn:disabled {
+    cursor: not-allowed;
+    background-color: white;
 }
