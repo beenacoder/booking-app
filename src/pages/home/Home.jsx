@@ -1,9 +1,10 @@
 import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
 import Featured from "../../components/featured/Featured";
-import './home.css';
 import PropertyList from "../../components/propertyList/propertyList";
 import FeaturedProperties from "../../components/featuredProperties/FeaturedProperties";
+import MailList from "../../components/mailList/MailList";
+import './home.css';
 
 const Home = () => {
     return (
@@ -16,7 +17,7 @@ const Home = () => {
                 <PropertyList />
                 <h1 className="home-title">Lo mas buscado</h1>
                 <FeaturedProperties />
-
+                <MailList />
             </div>
         </div>
     )
