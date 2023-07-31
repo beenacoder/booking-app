@@ -1,0 +1,32 @@
+.prop-list {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.prop-list-item {
+    /* To put the images on the same size */
+    flex: 1; 
+    
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.prop-list-img {
+    width: 100%;
+    object-fit: cover;
+    height: 150px;
+
+}
+
+.prop-list-titles>h1 {
+    font-size: 18px;
+}
+
+.prop-list-titles>h2 {
+    font-size: 14px;
+    font-weight: 400;
+}

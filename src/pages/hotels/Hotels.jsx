@@ -1,7 +1,11 @@
+import Navbar from "../../components/navbar/Navbar";
+import Header from "../../components/header/Header";
+
 const Hotels = () => {
     return (
         <div>
-            <h1>Hotels</h1>
+            <Navbar />
+            <Header type='list' />
         </div>
     )
 }
