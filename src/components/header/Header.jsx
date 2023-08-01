@@ -1,13 +1,16 @@
-import { faBed, faCalendarDays, faCar, faChurch, faPerson, faPlane, faTaxi } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import './header.css';
-import 'react-date-range/dist/styles.css'; // main css file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import { faBed, faCalendarDays, faCar, faChurch, faPerson, faPlane, faTaxi } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
+import './header.css';
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 const Header = ({type}) => {
+    const [destination, setDestination] = useState('');
+
     const [openCalendar, setOpenCalendar] = useState(false);
     const [openOptions, setOpenOptions] = useState(false);
     const [date, setDate] = useState([
@@ -25,11 +28,20 @@ const Header = ({type}) => {
     })
     const {adult, children, room} = options;
 
+    const navigate = useNavigate()
+
+    const handleDestination = (e) => {
+        setDestination(e.target.value);
+    }
 
     const handleOptions = (name, operation)=> {
         setOptions(prev=>{return{
             ...prev, [name]: operation === 'plus' ? options[name] + 1 : options[name] - 1
         }})
+    }
+
+    const handleSearch = () => {
+        navigate('/hoteles', {state: {destination, date, options}})
     }
     return (
         <div className='header'>
@@ -66,7 +78,7 @@ const Header = ({type}) => {
                         <div className="header-search">
                             <div className="header-search-item">
                                 <FontAwesomeIcon icon={faBed} className="header-icon" />
-                                <input type="text" placeholder="Busca tu próximo destino" className="header-search-input" />
+                                <input type="text" placeholder="Busca tu próximo destino" className="header-search-input" onChange={handleDestination}/>
                             </div>
                             <div className="header-search-item">
                                 <FontAwesomeIcon icon={faCalendarDays} className="header-icon" />
@@ -112,7 +124,7 @@ const Header = ({type}) => {
                                 }
                             </div>
                             <div className="header-search-item">
-                                <button className="header-btn">Buscar</button>
+                                <button className="header-btn" onClick={handleSearch}>Buscar</button>
                             </div>
                         </div>
                     </>

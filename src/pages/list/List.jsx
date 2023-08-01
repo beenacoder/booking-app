@@ -11,8 +11,20 @@ const List = () => {
                 <div className="list-wrapper">
                     <div className="list-search">
                         <h1 className="list-search-title">Buscar</h1>
-                        
+                        <div className="list-item">
+                            <label htmlFor="">Destino</label>
+                            <input type="text" />
+                        </div>
+
+                        <div className="list-item">
+                            <label htmlFor="">Llegada</label>
+                            <input type="text" />
+                        </div>
                     </div>
+
+
+
+
                     <div className="list-result"></div>
                 </div>
             </div>
