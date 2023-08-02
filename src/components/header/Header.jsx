@@ -82,18 +82,19 @@ const Header = ({type}) => {
                             </div>
                             <div className="header-search-item">
                                 <FontAwesomeIcon icon={faCalendarDays} className="header-icon" />
-                                <span onClick={() => { setOpenCalendar(!openCalendar) }} className="header-search-text">{`${format(date[0].startDate, "dd/MM/yyyy")} hasta ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
+                                <span onClick={() => { setOpenCalendar(!openCalendar), setOpenOptions(false) }} className="header-search-text">{`${format(date[0].startDate, "dd/MM/yyyy")} hasta ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
                                 {openCalendar && <DateRange
                                     editableDateInputs={true}
                                     onChange={item => setDate([item.selection])}
                                     moveRangeOnFirstSelection={false}
                                     ranges={date}
+                                    minDate={new Date()}
                                     className="date-range"
                                 />}
                             </div>
                             <div className="header-search-item">
                                 <FontAwesomeIcon icon={faPerson} className="header-icon" />
-                                <span onClick={() => { setOpenOptions(!openOptions) }} className="header-search-text">{`${adult} adulto - ${children} menor/es - ${room} habitación `}</span>
+                                <span onClick={() => { setOpenOptions(!openOptions), setOpenCalendar(false) }} className="header-search-text">{`${adult} adulto - ${children} menor/es - ${room} habitación `}</span>
                                 {openOptions &&
                                     <div className="options-host">
                                         <div className="options-host-item">

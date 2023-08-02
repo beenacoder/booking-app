@@ -4,6 +4,7 @@ import { format } from "date-fns";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import './list.css';
+import { DateRange } from "react-date-range";
 
 const List = () => {
     const location = useLocation();
@@ -11,6 +12,9 @@ const List = () => {
     const [destination, setDestination] = useState(location.state.destination);
     const [date, setDate] = useState(location.state.date);
     const [options, setOptions] = useState(location.state.options);
+    const [openDate, setOpenDate] = useState(false);
+
+    
 
 
     return (
@@ -28,7 +32,20 @@ const List = () => {
 
                         <div className="list-item">
                             <label htmlFor="">Check In</label>
-                            <span>{`${format(date[0].startDate, "dd/MM/yyyy")} hasta ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
+                            <span onClick={() => setOpenDate(!openDate)}>{`${format(date[0].startDate, "dd/MM/yyyy")} hasta ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
+                            {openDate &&
+                                <DateRange
+                                    onChange={(item) => { setDate([item.selection]) }}
+                                    minDate={new Date()}
+                                    ranges={date}
+                                />
+                            }
+                        </div>
+                        <div className="list-item">
+                            <label>Opciones</label>
+                            <div className="list-options-item">
+                                <span className="list-options-text">Precio mín <small>por noche</small></span>
+                            </div>
                         </div>
                     </div>
 
