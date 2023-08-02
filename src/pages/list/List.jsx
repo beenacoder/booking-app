@@ -8,7 +8,7 @@ import './list.css';
 const List = () => {
     const location = useLocation();
 
-    const [destination, setDestination] = useState(location.state.location);
+    const [destination, setDestination] = useState(location.state.destination);
     const [date, setDate] = useState(location.state.date);
     const [options, setOptions] = useState(location.state.options);
 
@@ -22,7 +22,7 @@ const List = () => {
                     <div className="list-search">
                         <h1 className="list-search-title">Buscar</h1>
                         <div className="list-item">
-                            <label htmlFor="">Destino</label>
+                            <label>Destino</label>
                             <input placeholder={destination} type="text" />
                         </div>
 
