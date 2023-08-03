@@ -23,7 +23,7 @@ const SearchItem = () => {
                 </div>
                 <div className="search-item-deatils-text">
                     <span className="search-item-price">$5000</span>
-                    <span className="search-item-tax-option">Incluye IVA</span>
+                    <span className="search-item-tax-option">(Incluye IVA)</span>
                     <button className="search-item-check-btn">Ver disponibilidad</button>
                 </div>
             </div>

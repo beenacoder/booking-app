@@ -20,7 +20,6 @@
     flex-direction: column;
     gap: 10px;
     flex: 2;
-    background-color: lightgray;
 }
 
 .search-item-title {
@@ -63,7 +62,6 @@
 
 .search-item-details {
     flex: 1;
-    background-color: lightgray;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -84,4 +82,35 @@
     padding: 5px;
     font-weight: bold;
     border: none;
+}
+
+.search-item-deatils-text {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.search-item-price {
+    font-size: 24px;
+}
+
+.search-item-tax-option {
+    font-size: 12px;
+    color: #555;
+}
+
+.search-item-check-btn {
+    background-color: #0071c2;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px 5px;
+    border-radius: 5px;
+}
+
+.search-item-check-btn:hover {
+    background-color: #0b7bca;
 }
