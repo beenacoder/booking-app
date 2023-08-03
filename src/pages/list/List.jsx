@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import './list.css';
 import { DateRange } from "react-date-range";
+import SearchItem from "../../components/searchItem/SearchItem";
 
 const List = () => {
     const location = useLocation();
@@ -43,16 +44,49 @@ const List = () => {
                         </div>
                         <div className="list-item">
                             <label>Opciones</label>
-                            <div className="list-options-item">
-                                <span className="list-options-text">Precio mín <small>por noche</small></span>
+                            <div className="list-search-options">
+                                <div className="list-search-options-item">
+                                    <span className="list-search-options-text">Precio mín <small>por noche</small></span>
+                                    <input type="number" className="list-search-option-input" />
+                                </div>
+
+                                <div className="list-search-options-item">
+                                    <span className="list-search-options-text">Precio max <small>por noche</small></span>
+                                    <input type="number" className="list-search-option-input" />
+                                </div>
+
+                                <div className="list-search-options-item">
+                                    <span className="list-search-options-text">Adultos</span>
+                                    <input type="number" min={1} className="list-search-option-input" placeholder={options.adult}/>
+                                </div>
+
+                                <div className="list-search-options-item">
+                                    <span className="list-search-options-text">Menores</span>
+                                    <input type="number" min={0} className="list-search-option-input" placeholder={options.children}/>
+                                </div>
+
+                                <div className="list-search-options-item">
+                                    <span className="list-search-options-text">Habitación</span>
+                                    <input type="number" min={1} className="list-search-option-input" placeholder={options.room}/>
+                                </div>
                             </div>
                         </div>
+                        <button>Buscar</button>
                     </div>
 
 
 
 
-                    <div className="list-result"></div>
+                    <div className="list-result">
+                        <SearchItem />
+                        <SearchItem />
+                        <SearchItem />
+                        <SearchItem />
+                        <SearchItem />
+                        <SearchItem />
+                        <SearchItem />
+                        <SearchItem />
+                    </div>
                 </div>
             </div>
         </div>

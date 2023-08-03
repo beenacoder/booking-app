@@ -57,3 +57,37 @@
     align-items: center;
     cursor:pointer;
 }
+
+.list-item>label {
+    font-weight: 600;
+}
+
+.list-search-options {
+    padding: 10px;
+}
+
+.list-search-options-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 12px;
+
+}
+
+.list-search-option-input {
+    width: 50px;
+    border-radius: 5px;
+}
+
+.list-search>button {
+    padding: 10px;
+    background-color: #0071c2;
+    color: white;
+    border: none;
+    width: 100%;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+}
