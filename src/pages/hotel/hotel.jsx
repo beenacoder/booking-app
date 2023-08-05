@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import Header from '../../components/header/Header';
 import MailList from '../../components/mailList/MailList';
@@ -28,11 +29,19 @@ const images = [
 ]
 
 const Hotel = () => {
+    const [slideNumber, setSlideNumber] = useState(0)
+    const [openSlider, setOpenSlider] = useState(false)
+
     return (
         <div>
             <Navbar />
             <Header type="list"/>
             <div className="hotel-container">
+                {openSlider &&
+                    <div className="slider">
+
+                    </div>
+                }
                 <div className="hotel-wrapper">
                     <button className='hotel-reserve-btn'>Reserva Ahora!</button>
                     <h1 className="hotel-title">Hotel Belsavac</h1>
@@ -43,9 +52,9 @@ const Hotel = () => {
                     <span className="hotel-distance">Excelente ubicación, pleno centro de la ciudad</span>
                     <span className="hote-price-promo">Quedate 3 noches por el precio de 2</span>
                     <div className="hotel-images">
-                        {images.map(image => (
-                            <div className="hotel-img-wrapper">
-                                <img src={image.src} alt="" className='hotel-img'/>
+                        {images.map((image, index) => (
+                            <div key={index} className="hotel-img-wrapper">
+                                <img onClick={()=>setSlideNumber(index)} src={image.src} alt="" className='hotel-img'/>
                             </div>
                         ))}
                     </div>
