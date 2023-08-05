@@ -3,7 +3,7 @@ import Navbar from '../../components/navbar/Navbar';
 import Header from '../../components/header/Header';
 import MailList from '../../components/mailList/MailList';
 import Footer from '../../components/footer/Footer';
-import { faLocation } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight, faCircleXmark, faLocation } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './hotel.css'
 
@@ -29,8 +29,25 @@ const images = [
 ]
 
 const Hotel = () => {
-    const [slideNumber, setSlideNumber] = useState(0)
+    const [imageIndex, setImageIndex] = useState(0)
     const [openSlider, setOpenSlider] = useState(false)
+
+    const handleSlider = (index) => {
+        setImageIndex(index)
+        setOpenSlider(true)
+    }
+
+    const handleMove = (direction)=> {
+        let newImageIndex;
+
+        if(direction === "l") {
+            newImageIndex = imageIndex === 0 ? 5 : imageIndex - 1
+        } else {
+            newImageIndex = imageIndex === 5 ? 0 : imageIndex + 1
+        }
+
+        setImageIndex(newImageIndex);
+    }
 
     return (
         <div>
@@ -39,7 +56,12 @@ const Hotel = () => {
             <div className="hotel-container">
                 {openSlider &&
                     <div className="slider">
-
+                        <FontAwesomeIcon icon={faCircleXmark} className='close' onClick={()=>setOpenSlider(false)}/>
+                        <FontAwesomeIcon icon={faArrowLeft} className='arrow' onClick={() => handleMove("l")}/>
+                        <div className="slider-wrapper">
+                            <img src={images[imageIndex].src} alt="" className="slider-img" />
+                        </div>
+                        <FontAwesomeIcon icon={faArrowRight} className='arrow' onClick={() => handleMove("r")}/>
                     </div>
                 }
                 <div className="hotel-wrapper">
@@ -54,7 +76,7 @@ const Hotel = () => {
                     <div className="hotel-images">
                         {images.map((image, index) => (
                             <div key={index} className="hotel-img-wrapper">
-                                <img onClick={()=>setSlideNumber(index)} src={image.src} alt="" className='hotel-img'/>
+                                <img onClick={() => handleSlider(index)} src={image.src} alt="" className='hotel-img'/>
                             </div>
                         ))}
                     </div>
